@@ -1,0 +1,139 @@
+ class Main {
+    public static void main(String[] args) {
+      Scanner leitor = new Scanner(System.in);
+      int row, column= 0;
+
+      System.out.print("Digite a numero de linhas e colunas da matrix: ");
+      column = leitor.nextInt();
+      row = column;
+
+      int matrix[][] = new int[row][column];
+
+      System.out.println("Digite os elementos da matriz --> ");
+      for(int i=0;i<row;i++){
+        System.out.print("Informe os elementos da linha "+(i+1)+": ");
+        for(int j=0;j<column;j++){
+          matrix[i][j] = leitor.nextInt();
+        }
+      }
+
+      for(int r[] : matrix){
+        for(int element : r){
+          System.out.print(element+" ");
+        } 
+        System.out.println();
+      }
+    
+      rotate(matrix);
+    }  
+
+    public static void rotate(int[][] matrix){
+      Scanner leitor = new Scanner(System.in);
+      int N = matrix.length;
+      int dgree = 0;
+
+      System.out.print("Declare qual o grau de rotação da matriz,  entre 0°, 90°, 180°, 270° e 360°");
+      dgree = leitor.nextInt();
+
+      switch(dgree){
+        case 0:
+          for(int r[] : matrix){
+            for(int element : r){
+              System.out.print(element+" ");
+            }
+            System.out.println();
+          }
+          break;
+
+        case 360:
+          for(int r[] : matrix){
+            for(int element : r){
+              System.out.print(element+" ");
+            }
+            System.out.println();
+          }        
+
+          break;
+
+        case 90:
+          for(int i=0;i<N;i++){
+            for(int j=i; j<N; j++){
+              int aux = matrix[i][j];
+              matrix[i][j] = matrix[j][i];
+              matrix[j][i] = aux;
+            }
+          }
+          for(int i=0;i<N;i++){
+            for(int j=0;j<(N/2);j++){
+              int aux = matrix[i][j];
+              matrix[i][j] = matrix[i][N-1-j];
+              matrix[i][N-1-j] = aux;
+            }
+          }
+          for(int r[] : matrix){
+            for(int element : r){
+              System.out.print(element+" ");
+            }
+            System.out.println();
+          }
+
+          break;
+
+        case 180:
+        for(int count=0;count<2;count++){
+            for(int i=0;i<N;i++){
+              for(int j=i; j<N; j++){
+                int aux = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = aux;
+              }
+            }
+            for(int i=0;i<N;i++){
+              for(int j=0;j<(N/2);j++){
+                int aux = matrix[i][j];
+                matrix[i][j] = matrix[i][N-1-j];
+                matrix[i][N-1-j] = aux;
+              }
+            }
+        }
+          for(int r[] : matrix){
+            for(int element : r){
+              System.out.print(element+" ");
+            }
+            System.out.println();
+          }
+
+          break;
+
+        case 270:
+        for(int count=0;count<3;count++){
+            for(int i=0;i<N;i++){
+              for(int j=i; j<N; j++){
+                int aux = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = aux;
+              }
+            }
+            for(int i=0;i<N;i++){
+              for(int j=0;j<(N/2);j++){
+                int aux = matrix[i][j];
+                matrix[i][j] = matrix[i][N-1-j];
+                matrix[i][N-1-j] = aux;
+              }
+            }
+        }
+          for(int r[] : matrix){
+            for(int element : r){
+              System.out.print(element+" ");
+            }
+            System.out.println();
+          }
+
+          break; 
+
+        default:
+          System.out.println("O Grau inserido é inválido.");
+      }
+
+    }
+  }
