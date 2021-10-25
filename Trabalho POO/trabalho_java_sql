@@ -1,0 +1,16 @@
+create DATABASE meu_banco;
+use meu_banco;
+
+CREATE TABLE trabalho (
+    ID INT PRIMARY KEY AUTOINCREMENT NOT NULL,
+    PAISES VARCHAR (300) 
+);
+
+INSERT INTO trabalho (PAISES) values ('Romênia'),('China'),('Austrália'),('Costa Rica'),('Brasil'),('Nigéria');
+
+UPDATE trabalho set PAISES='Canadá' where ID=2;
+
+DELETE from trabalho where ID=3;
+
+DELETE from trabalho;
+
